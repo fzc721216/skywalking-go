@@ -66,7 +66,7 @@ func (i *Instrument) FilterAndEdit(path string, curFile *dst.File, cursor *dstut
 	}
 	targetDir := filepath.Dir(path)
 	for _, sub := range CopiedSubPackages {
-		if regexp.MustCompile(filepath.Join(CopiedBasePackage, sub) + "$").MatchString(targetDir) {
+		if regexp.MustCompile(filepath.Join(CopiedBasePackage, sub) + string(filepath.Separator)).MatchString(targetDir) {
 			i.needsCopyDir = sub
 			i.hasCopyPath = true
 			return true
